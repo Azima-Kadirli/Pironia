@@ -52,23 +52,27 @@ public class CardController(AppDbContext context) : Controller
     public async Task<IActionResult> Update(int id)
     {
 
-        var feature = await context.Cards.FindAsync(id);
-        return View(feature);
+        var card = await context.Cards.FindAsync(id);
+        if (card is not { }) return NotFound();
+        return View(card);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Update(int id, Card card)
+    public async Task<IActionResult> Update(Card card)
     {
         if (!ModelState.IsValid)
-            return View(card);
+        {
+            return View();
+        }
+        var existCard = await context.Cards.FindAsync(card.Id);
+        if (existCard is not { })
+            return NotFound();
 
-        var updatedCard = await context.Cards.FindAsync(id);
-        if (updatedCard is null) return NotFound();
+        existCard.Description = card.Description;
+        existCard.Title = card.Title;
+        existCard.Icon = card.Icon;
 
-        updatedCard.Title = card.Title;
-        updatedCard.Description = card.Description;
-        updatedCard.Icon = card.Icon;
-
+        context.Cards.Update(existCard);
         await context.SaveChangesAsync();
         return RedirectToAction(nameof(Index));
     }

@@ -1,18 +1,22 @@
-﻿<div class="container">
+﻿@model Card
+<div class="container">
     <div class="row">
 
-<form method="post" asp-action="Create" asp-controllers="Card">
+<form method="post">
   <div class="form-group">
     <label for="Description">Description</label>
     <input type="text" name="description" class="form-control" id="Description" placeholder="Description">
+    <span class="text-danger" asp-validation-for="Description"></span>
   </div>
   <div class="form-group">
     <label for="Title">Title</label>
     <input type="text" name="title"  class="form-control" id="Title" placeholder="Title">
+     <span class="text-danger" asp-validation-for="Title"></span>
   </div>
   <div class="form-group">
     <label for="Icon">Icon</label>
     <input type="text" name="icon" class="form-control" id="Icon" placeholder="Icon">
+     <span class="text-danger" asp-validation-for="Icon"></span>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

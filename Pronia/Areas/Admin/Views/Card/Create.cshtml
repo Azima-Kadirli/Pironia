@@ -1,21 +1,27 @@
-﻿<div class="container">
-    <div class="row">
+﻿@model Card
 
-<form method="post" asp-action="Create" asp-controllers="Card">
-  <div class="form-group">
-    <label for="Description">Description</label>
-    <input type="text" name="description" class="form-control" id="Description" placeholder="Description">
-  </div>
-  <div class="form-group">
-    <label for="Title">Title</label>
-    <input type="text" name="title"  class="form-control" id="Title" placeholder="Title">
-  </div>
-  <div class="form-group">
-    <label for="Icon">Icon</label>
-    <input type="text" name="icon" class="form-control" id="Icon" placeholder="Icon">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<div class="container">
+  <div class="row">
+    <form method="post">
+      <div class="form-group">
+        <label asp-for="Description"></label>
+        <input asp-for="Description" class="form-control" placeholder="Description" />
+        <span class="text-danger" asp-validation-for="Description"></span>
+      </div>
 
-    </div>
+      <div class="form-group">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" placeholder="Title" />
+        <span class="text-danger" asp-validation-for="Title"></span>
+      </div>
+
+      <div class="form-group">
+        <label asp-for="Icon"></label>
+        <input asp-for="Icon" class="form-control" placeholder="Icon" />
+        <span class="text-danger" asp-validation-for="Icon"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 </div>

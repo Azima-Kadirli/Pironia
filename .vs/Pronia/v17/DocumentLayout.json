@@ -1,49 +1,49 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\",
+  "WorkspaceRootPath": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\models\\card.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\views\\card\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\views\\card\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\views\\card\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\controllers\\cardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\views\\card\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\views\\card\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\views\\card\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\views\\card\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\views\\card\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\views\\card\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\areas\\admin\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\areas\\admin\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\areas\\admin\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pronia\\pronia\\pronia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|c:\\users\\asus\\desktop\\pironia\\pironia\\pronia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3598C78B-BB54-4835-ADA4-46712B3C735A}|Pronia\\Pronia.csproj|solutionrelative:pronia\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -88,50 +88,47 @@
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\_ViewImports.cshtml",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Views\\_ViewImports.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\_ViewImports.cshtml",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-22T21:56:08.132Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-22T21:56:08.132Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Update.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Card\\Update.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Card\\Update.cshtml",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Views\\Card\\Update.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Card\\Update.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Card\\Update.cshtml",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Views\\Card\\Update.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-22T21:42:54.324Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-22T21:42:54.324Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Card\\Create.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Card\\Create.cshtml",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Views\\Card\\Create.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Card\\Create.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Card\\Create.cshtml",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Views\\Card\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-22T21:02:20.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-22T21:02:20.577Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Card.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Models\\Card.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Models\\Card.cs",
               "RelativeDocumentMoniker": "Pronia\\Models\\Card.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Models\\Card.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Models\\Card.cs",
               "RelativeToolTip": "Pronia\\Models\\Card.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAXAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-22T20:44:24.338Z",
               "EditorCaption": ""
@@ -140,9 +137,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Card\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Card\\Index.cshtml",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Views\\Card\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Card\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Card\\Index.cshtml",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Views\\Card\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -152,22 +149,21 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "CardController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Controllers\\CardController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Controllers\\CardController.cs",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Controllers\\CardController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Controllers\\CardController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Controllers\\CardController.cs",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Controllers\\CardController.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAAwEAAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-22T20:25:42.038Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-22T20:25:42.038Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
               "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\_ViewStart.cshtml",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Views\\_ViewStart.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\_ViewStart.cshtml",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Views\\_ViewStart.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -177,9 +173,9 @@
               "$type": "Document",
               "DocumentIndex": 6,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "ViewState": "AgIAAMMCAAAAAAAAAAAqwPECAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -189,9 +185,9 @@
               "$type": "Document",
               "DocumentIndex": 8,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -201,9 +197,9 @@
               "$type": "Document",
               "DocumentIndex": 7,
               "Title": "DashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "Pronia\\Areas\\Admin\\Controllers\\DashboardController.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Areas\\Admin\\Controllers\\DashboardController.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "Pronia\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -213,9 +209,9 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Program.cs",
               "RelativeDocumentMoniker": "Pronia\\Program.cs",
-              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Program.cs",
+              "ToolTip": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Program.cs",
               "RelativeToolTip": "Pronia\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

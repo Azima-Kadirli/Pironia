@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Pronia.csproj": {}
+    "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Pronia.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Pronia.csproj": {
+    "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Pronia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Pronia.csproj",
+        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Pronia.csproj",
         "projectName": "Pronia",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\Pronia.csproj",
+        "projectPath": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Pronia.csproj",
         "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\Pronia\\Pronia\\Pronia\\obj\\",
+        "outputPath": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

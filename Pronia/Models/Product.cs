@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using Pronia.Common;
 
@@ -13,8 +14,20 @@ public class Product:BaseEntity
     [Required]
     [Precision(10,2)]
     public decimal Price { get; set; }
-    public string ImagePath { get; set; }
+    
     [Required]
     public int CategoryId { get; set; }
-    public Category? Category { get; set; }  
+    public Category Category { get; set; }  
+    public string MainImagePath  { get; set; }
+    public string HoverImagePath { get; set; }
+    public ICollection<ProductImage> ProductImages { get; set; }    
+    [Range(0,5)]
+    public double Rating { get; set; }
+}
+
+public class ProductImage:BaseEntity
+{
+    public int ProductId { get; set; }
+    public Product Product { get; set; }
+    public string ImagePath { get; set; }
 }

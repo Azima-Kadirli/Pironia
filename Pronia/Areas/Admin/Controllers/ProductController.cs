@@ -1,12 +1,22 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pronia.Context;
+using Pronia.ViewModels.ProductViewModels;
 
 
 namespace Pronia.Areas.Admin.Controllers;
 [Area("Admin")]
-public class ProductController(AppDbContext context) : Controller
+public class ProductController : Controller
 {
+    private readonly AppDbContext context;
+    private readonly IWebHostEnvironment _environment;
+    public ProductController(AppDbContext context, IWebHostEnvironment environment)
+    {
+        this.context = context;
+        _environment = environment;
+    }
+
+    
     // GET
     public async Task<IActionResult> Index()
     {
@@ -23,18 +33,63 @@ public class ProductController(AppDbContext context) : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Product product)
+    public async Task<IActionResult> Create(ProductCreateViewModel vm)
     {
         if (!ModelState.IsValid)
         {
-            var categories = await context.Categories.ToListAsync();
-            ViewBag.Categories = categories;
-            return View(product);   
+            return View(vm);   
         }
-        var existedCategory = await context.Categories.AnyAsync(x=>x.Id==product.CategoryId);
-        if (!existedCategory)
+
+        // var existedCategory = await context.Categories.AnyAsync(x=>x.Id==product.CategoryId);
+        // if (!existedCategory)
+        // {
+        //     ModelState.AddModelError("CategoryId", "Bele bir kateqoriya yoxdur");
+        //     return View(product);
+        // }
+
+
+        
+        
+        
+        string uniqueMainImageName = Guid.NewGuid().ToString() + vm.MainImage;
+        string mainPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images",uniqueMainImageName);  
+        using FileStream mainStream = new (mainPath, FileMode.Create);
+        await vm.MainImage.CopyToAsync(mainStream);
+        
+        string uniqueHoverImageName = Guid.NewGuid().ToString() + vm.MainImage;
+        string hoverPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images",uniqueHoverImageName);  
+        using FileStream hoverStream = new (hoverPath, FileMode.Create);
+        await vm.HoverImage.CopyToAsync(hoverStream);
+        
+        Product product = new()
         {
-            ModelState.AddModelError("CategoryId", "Bele bir kateqoriya yoxdur");
+            Name = vm.Name,
+            Description = vm.Description,
+            Price = vm.Price,
+            CategoryId = vm.CategoryId,
+            HoverImagePath = uniqueHoverImageName,
+            MainImagePath = uniqueMainImageName
+        };
+        if (!vm.MainImage.ContentType.Contains("image"))
+        {
+            ModelState.AddModelError("MainImage", "Ancaq image tipinde data elave ede bilersiniz");
+            return View(product);
+        }
+
+        if (vm.MainImage.Length > 2 * 1024 * 1024)
+        {
+            ModelState.AddModelError("MainImage", "Seklin maksimum uzunlugu 2mb-dan cox olmamalidir");
+            return View(product);
+        }
+        if (!vm.HoverImage.ContentType.Contains("image"))
+        {
+            ModelState.AddModelError("HoverImage", "Ancaq image tipinde data elave ede bilersiniz");
+            return View(product);
+        }
+
+        if (vm.HoverImage.Length > 2 * 1024 * 1024)
+        {
+            ModelState.AddModelError("HoverImage", "Seklin maksimum uzunlugu 2mb-dan cox olmamalidir");
             return View(product);
         }
         await context.Products.AddAsync(product);  
@@ -77,7 +132,7 @@ public class ProductController(AppDbContext context) : Controller
         existedProduct.Name = product.Name;
         existedProduct.Description = product.Description;
         existedProduct.Price = product.Price;
-        existedProduct.ImagePath = product.ImagePath;
+        //existedProduct.ImagePath = product.ImagePath;
         context.Update(existedProduct);
         await context.SaveChangesAsync();
         return RedirectToAction("Index");
@@ -89,9 +144,21 @@ public class ProductController(AppDbContext context) : Controller
         if (product is null)
             return NotFound();
 
+        
         context.Products.Remove(product);
         await context.SaveChangesAsync();
+        
+        string folderPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images");  
+        string mainImagePath = Path.Combine(folderPath, product.MainImagePath);
+        string hoverImagePath = Path.Combine(folderPath, product.HoverImagePath);
+        if(System.IO.File.Exists(mainImagePath))
+        System.IO.File.Delete(mainImagePath);
+        if(System.IO.File.Exists(hoverImagePath))
+        System.IO.File.Delete(hoverImagePath);
+        
         return RedirectToAction(nameof(Index));
     }
+    
+    
    
 }

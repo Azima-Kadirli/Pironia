@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Pronia.csproj": {}
+    "C:\\Users\\student\\Desktop\\Pronia\\Pironia\\Pronia\\Pronia.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Pronia.csproj": {
+    "C:\\Users\\student\\Desktop\\Pronia\\Pironia\\Pronia\\Pronia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Pronia.csproj",
+        "projectUniqueName": "C:\\Users\\student\\Desktop\\Pronia\\Pironia\\Pronia\\Pronia.csproj",
         "projectName": "Pronia",
-        "projectPath": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\Pronia.csproj",
-        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ASUS\\Desktop\\Pironia\\Pironia\\Pronia\\obj\\",
+        "projectPath": "C:\\Users\\student\\Desktop\\Pronia\\Pironia\\Pronia\\Pronia.csproj",
+        "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\student\\Desktop\\Pronia\\Pironia\\Pronia\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\student\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

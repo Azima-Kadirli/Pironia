@@ -51,12 +51,12 @@ public class ProductController : Controller
         
         
         
-        string uniqueMainImageName = Guid.NewGuid().ToString() + vm.MainImage;
+        string uniqueMainImageName = Guid.NewGuid().ToString() + vm.MainImage.FileName;
         string mainPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images",uniqueMainImageName);  
         using FileStream mainStream = new (mainPath, FileMode.Create);
         await vm.MainImage.CopyToAsync(mainStream);
         
-        string uniqueHoverImageName = Guid.NewGuid().ToString() + vm.MainImage;
+        string uniqueHoverImageName = Guid.NewGuid().ToString() + vm.MainImage.FileName;
         string hoverPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images",uniqueHoverImageName);  
         using FileStream hoverStream = new (hoverPath, FileMode.Create);
         await vm.HoverImage.CopyToAsync(hoverStream);

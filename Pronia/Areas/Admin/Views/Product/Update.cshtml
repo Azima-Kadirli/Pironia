@@ -1,10 +1,10 @@
-﻿@model Product
+﻿@model ProductUpdateViewModel
 
 <div class="container">
     <div class="row">
         <h2>Update Product</h2>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label asp-for="Name"></label>
                 <input asp-for="Name" class="form-control" />
@@ -43,11 +43,34 @@
                 <span class="text-danger" asp-validation-for="CategoryId"></span>
             </div>
 
-            @* <div class="form-group"> *@
-            @*     <label asp-for="ImagePath"></label> *@
-            @*     <input asp-for="ImagePath" class="form-control" /> *@
-            @*     <span class="text-danger" asp-validation-for="ImagePath"></span> *@
-            @* </div> *@
+            <div class="form-group">
+                <label asp-for="TagIds"></label>
+                <select asp-for="TagIds" id="TagIds">
+                    <option value="null" disabled selected>Tag secin</option>
+                    @foreach (Tag tag in ViewBag.Tags)
+                    {
+                        <option value="@tag.Id">@tag.Name</option>
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="TagIds"></span>
+            </div>
+
+            
+            <div class="form-group">
+                <input type="hidden" asp-for="MainImagePath">
+                <img src="~/assets/images/website-images/@Model.MainImagePath" width="50" height="50"/>
+                <label asp-for="MainImage">Main Image</label>
+                <input asp-for="MainImage" class="form-control"/>
+                <span class="text-danger" asp-validation-for="MainImage"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="hidden" asp-for="HoverImagePath">
+                <img src="~/assets/images/website-images/@Model.HoverImagePath" width="50" height="50">
+                <label asp-for="HoverImage">Hover Image</label>
+                <input asp-for="HoverImage" class="form-control"/>
+                <span class="text-danger" asp-validation-for="HoverImage"></span>
+            </div>
 
             <button type="submit" class="btn btn-primary mt-2">Update</button>
         </form>

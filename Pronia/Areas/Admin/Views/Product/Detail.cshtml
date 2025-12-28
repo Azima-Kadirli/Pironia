@@ -1,0 +1,15 @@
+﻿@model ProductGetViewModel
+<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="~/assets/images/website-images/@Model.MainImagePath" alt="Card image cap">
+    <img class="card-img-top" src="~/assets/images/website-images/@Model.HoverImagePath" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text">@Model.Price</p>
+        <p class="card-text">@Model.CategoryName</p>
+        <p class="card-text">Tags: @foreach (var tag in Model.TagNames)
+                                   {
+                                       <span>@tag</span>
+                                   }</p>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+﻿@model List<CategoryGetViewModel>
+
+<div class="container">
+    <div class="col 4"><h2>Bu category yaradilmasi ucundur</h2></div>
+    <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (CategoryGetViewModel category in Model)
+            {
+                <tr>
+                    <th scope="row">@category.Id</th>
+                    <td>@category.Name</td>
+                    <td>
+                        <a asp-action="Detail" asp-route-id="@category.Id" class="btn btn-primary"><i class="fa-solid fa-info"></i></a>
+                        <a asp-action="Update" asp-route-id="@category.Id" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a asp-action="Delete" asp-route-id="@category.Id" class="btn btn-danger deletebtn"><i class="fa-solid fa-trash"></i></a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    const deleteButtons = document.querySelectorAll('.deletebtn');
+    deleteButtons.forEach(btn=>{
+        btn.addEventListener('click',(e)=>{
+            e.preventDefault();
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your file has been deleted.",
+                        icon: "success"
+                    });
+                    
+                    window.location.href=btn.href;
+                }
+            });
+        })
+    })
+    
+</script>

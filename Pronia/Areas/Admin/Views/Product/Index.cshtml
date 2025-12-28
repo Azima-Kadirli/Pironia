@@ -1,4 +1,4 @@
-﻿@model List<Product>
+﻿@model List<ProductGetViewModel>
 
 <div class="container">
     <div class="col 4"><h2>Bu product yaradilmasi ucundur</h2></div>
@@ -16,7 +16,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach (Product product in Model)
+            @foreach (ProductGetViewModel product in Model)
             {
                 <tr>
                     <th scope="row">@product.Id</th>
@@ -27,10 +27,11 @@
                     </td>
                     <td><img src="~/assets/images/website-images/@product.HoverImagePath" alt="product image" width="120" />
                     </td>
-                    <td>@product.Category.Name</td>
+                    <td>@product.CategoryName</td>
                     <td>
-                        <a asp-action="Update" asp-route-id="@product.Id" class="btn btn-warning">Update</a>
-                        <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger deletebtn">Delete</a>
+                        <a asp-action="Detail" asp-route-id="@product.Id" class="btn btn-primary"><i class="fa-solid fa-info"></i></a>
+                        <a asp-action="Update" asp-route-id="@product.Id" class="btn btn-warning"><i class="fa-regular fa-pen-to-square"></i></a>
+                        <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger deletebtn"><i class="fa-solid fa-trash"></i></a>
                     </td>
                 </tr>
             }

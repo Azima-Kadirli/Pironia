@@ -306,11 +306,23 @@
                             </div>
                             <div class="rating-box">
                               <ul>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
+                                @{
+                                  int fullStars = (int)Math.Floor(product.Rating);
+                                  bool hasHalfStar = (product.Rating - fullStars) >= 0.5; 
+                                  int emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+                                }
+                                @for (int i = 0; i < fullStars; i++)
+                                {
+                                  <li><i class="fa fa-star"></i></li>
+                                }
+                                @if (hasHalfStar)
+                                {
+                                  <li><i class="fa fa-star-half-o"></i></li>
+                                }
+                                @for (int i = 0; i < emptyStars; i++)
+                                {
+                                  <li><i class="fa fa-star-o"></i></li>
+                                }
                               </ul>
                             </div>
                           </div>

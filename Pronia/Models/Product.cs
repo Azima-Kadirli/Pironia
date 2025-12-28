@@ -23,11 +23,6 @@ public class Product:BaseEntity
     public ICollection<ProductImage> ProductImages { get; set; }    
     [Range(0,5)]
     public double Rating { get; set; }
-}
-
-public class ProductImage:BaseEntity
-{
-    public int ProductId { get; set; }
-    public Product Product { get; set; }
-    public string ImagePath { get; set; }
+    public ICollection<ProductTag> ProductTags { get; set; } = [];
+    
 }

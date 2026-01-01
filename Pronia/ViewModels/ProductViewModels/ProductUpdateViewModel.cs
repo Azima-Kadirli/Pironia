@@ -7,9 +7,9 @@ public class ProductUpdateViewModel
 {
     public int Id { get; set; }
     [Required]
-    public string Name { get; set; }
+    public string Name { get; set; }=string.Empty;
     [Required]
-    public string Description { get; set; }
+    public string Description { get; set; }=string.Empty;
     [Required]
     [Precision(10,2)]
     public decimal Price { get; set; }
@@ -23,4 +23,6 @@ public class ProductUpdateViewModel
     
     public string? MainImagePath { get; set; }
     public string? HoverImagePath { get; set; }
+    public List<string>? AdditionalImagesPath { get; set; } = [];
+    public List<int>? AdditionalImagesIds { get; set; } = [];
 }

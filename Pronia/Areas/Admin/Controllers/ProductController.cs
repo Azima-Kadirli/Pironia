@@ -9,17 +9,17 @@ namespace Pronia.Areas.Admin.Controllers;
 [Area("Admin")]
 public class ProductController : Controller
 {
-    private readonly AppDbContext context;
+    private readonly AppDbContext _context;
     private readonly IWebHostEnvironment _environment;
     public ProductController(AppDbContext context, IWebHostEnvironment environment)
     {
-        this.context = context;
+        _context = context;
         _environment = environment;
     }
     
     public async Task<IActionResult> Index()
     {
-        List<ProductGetViewModel> vm = await context.Products.Include(x=>x.Category)
+        List<ProductGetViewModel> vm = await _context.Products.Include(x=>x.Category)
             .Select(product=>new ProductGetViewModel()
             {
                 Id = product.Id,
@@ -49,7 +49,7 @@ public class ProductController : Controller
             return View(vm);   
         }
 
-        var existedCategory = await context.Categories.AnyAsync(x => x.Id == vm.CategoryId);
+        var existedCategory = await _context.Categories.AnyAsync(x => x.Id == vm.CategoryId);
         if (!existedCategory)
         {
             await SendItemsWithViewBag<Category>();
@@ -58,7 +58,7 @@ public class ProductController : Controller
         }
         foreach (var tagId in  vm.TagIds)
         {
-            var isExistTag= await  context.Tags.AnyAsync(t => t.Id == tagId);
+            var isExistTag= await  _context.Tags.AnyAsync(t => t.Id == tagId);
             if (!isExistTag)
             {
                 await SendItemsWithViewBag<Tag>();
@@ -66,15 +66,19 @@ public class ProductController : Controller
                 return View(vm);
             }
         }
-        string uniqueMainImageName = Guid.NewGuid().ToString() + vm.MainImage.FileName;
-        string mainPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images",uniqueMainImageName);  
-        using FileStream mainStream = new (mainPath, FileMode.Create);
-        await vm.MainImage.CopyToAsync(mainStream);
-        
-        string uniqueHoverImageName = Guid.NewGuid().ToString() + vm.MainImage.FileName;
-        string hoverPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images",uniqueHoverImageName);  
-        using FileStream hoverStream = new (hoverPath, FileMode.Create);
-        await vm.HoverImage.CopyToAsync(hoverStream);
+
+        string folderPath = Path.Combine(_environment.WebRootPath, "assets", "images", "website-images");
+        // string uniqueMainImageName = Guid.NewGuid().ToString() + vm.MainImage.FileName;
+        // string mainPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images",uniqueMainImageName);  
+        // using FileStream mainStream = new (mainPath, FileMode.Create);
+        // await vm.MainImage.CopyToAsync(mainStream);
+        //
+        // string uniqueHoverImageName = Guid.NewGuid().ToString() + vm.MainImage.FileName;
+        // string hoverPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images",uniqueHoverImageName);  
+        // using FileStream hoverStream = new (hoverPath, FileMode.Create);
+       // await vm.HoverImage.CopyToAsync(hoverStream);
+       string uniqueHoverImageName = await vm.HoverImage.SaveFileAsync(folderPath);
+       string uniqueMainImageName = await vm.MainImage.SaveFileAsync(folderPath);
         
         Product product = new()
         {
@@ -84,9 +88,21 @@ public class ProductController : Controller
             CategoryId = vm.CategoryId,
             HoverImagePath = uniqueHoverImageName,
             MainImagePath = uniqueMainImageName,
-            ProductTags = []
+            ProductTags = [],
+            ProductImages = []
         };
 
+        foreach (var image in vm.Images)
+        {
+            string uniqueFilePath = await image.SaveFileAsync(folderPath);
+            ProductImage productImage = new()
+            {
+                ImagePath = uniqueFilePath,
+                Product = product
+            };
+            product.ProductImages.Add(productImage);
+        }
+        
         foreach (var tagId in vm.TagIds)
         {
             ProductTag productTag = new()
@@ -119,23 +135,37 @@ public class ProductController : Controller
             return View(product);
         }
 
+        foreach (var image in vm.Images)
+        {
+            if (!image.CheckType())
+            {
+                ModelState.AddModelError("Images", "Ancaq image tipinde data elave ede bilersiniz");
+                return View(product);
+            }
+
+            if (!image.CheckSize(2))
+            {
+                ModelState.AddModelError("Images", "Seklin maksimum uzunlugu 2mb-dan cox olmamalidir");
+                return View(product);
+            }
+        }
         
-        await context.Products.AddAsync(product);  
-        await context.SaveChangesAsync();
+        await _context.Products.AddAsync(product);  
+        await _context.SaveChangesAsync();
         return RedirectToAction("Index");
     }
     
     [HttpGet]
     public async Task<IActionResult> Update(int id)
     {
-        var product = await context.Products.Include(x=>x.ProductTags).FirstOrDefaultAsync(x => x.Id == id);
+        var product = await _context.Products.Include(x=>x.ProductTags).Include(x=>x.ProductImages).FirstOrDefaultAsync(x => x.Id == id);
       
         if (product == null)
         {
             return NotFound();
         }
-        ViewBag.Categories = await context.Categories.ToListAsync();
-        ViewBag.Tags = await context.Tags.ToListAsync();
+        ViewBag.Categories = await _context.Categories.ToListAsync();
+        ViewBag.Tags = await _context.Tags.ToListAsync();
         ProductUpdateViewModel vm = new ProductUpdateViewModel()
         {
             Id = product.Id,
@@ -145,7 +175,9 @@ public class ProductController : Controller
             CategoryId = product.CategoryId,
             HoverImagePath = product.HoverImagePath,
             MainImagePath = product.MainImagePath,
-            TagIds = product.ProductTags.Select(t => t.TagId).ToList()
+            TagIds = product.ProductTags.Select(t => t.TagId).ToList(),
+            AdditionalImagesPath = product.ProductImages.Select(x => x.ImagePath).ToList(),
+            AdditionalImagesIds = product.ProductImages.Select(x => x.Id).ToList()
         };
 
         return View(vm);
@@ -154,116 +186,158 @@ public class ProductController : Controller
     [HttpPost]
     public async Task<IActionResult> Update(ProductUpdateViewModel vm)
     {
-        if (!ModelState.IsValid)
+       if (!ModelState.IsValid)
+    {
+        ViewBag.Categories = await _context.Categories.ToListAsync();
+        ViewBag.Tags = await _context.Tags.ToListAsync();
+        return View(vm);
+    }
+
+    foreach (var tagId in vm.TagIds ?? new List<int>())
+    {
+        var isExistTag = await _context.Tags.AnyAsync(t => t.Id == tagId);
+        if (!isExistTag)
         {
-            var categories = await context.Categories.ToListAsync();
-            ViewBag.Categories = categories;
+            await SendItemsWithViewBag<Tag>();
+            ModelState.AddModelError("TagIds", "Bele bir tag movcud deyil");
             return View(vm);
         }
-        foreach (var tagId in  vm.TagIds)
-        {
-            var isExistTag= await  context.Tags.AnyAsync(t => t.Id == tagId);
-            if (!isExistTag)
-            {
-                await SendItemsWithViewBag<Tag>();
-                ModelState.AddModelError("TagIds","Bele bir tag movcud deyil");
-                return View(vm);
-            }
-        }
-        
-        var existedProduct = await context.Products.Include(x=>x.ProductTags).FirstOrDefaultAsync(x => x.Id == vm.Id);
-        if (existedProduct == null)
-        {
-            return BadRequest();
-        }
-        
-        if (!vm.MainImage?.CheckType() ?? false)
+    }
+
+    var existedProduct = await _context.Products
+        .Include(x => x.ProductTags)
+        .Include(x => x.ProductImages)
+        .FirstOrDefaultAsync(x => x.Id == vm.Id);
+
+    if (existedProduct == null) return BadRequest();
+
+    if (vm.MainImage != null)
+    {
+        if (!vm.MainImage.CheckType())
         {
             ModelState.AddModelError("MainImage", "Ancaq image tipinde data elave ede bilersiniz");
             return View(vm);
         }
-
-        if (vm.MainImage?.CheckSize(2) ?? false)
+        if (vm.MainImage.CheckSize(2))
         {
             ModelState.AddModelError("MainImage", "Seklin maksimum uzunlugu 2mb-dan cox olmamalidir");
             return View(vm);
         }
-        if (!vm.HoverImage?.CheckType()  ?? false)
+    }
+
+    if (vm.HoverImage != null)
+    {
+        if (!vm.HoverImage.CheckType())
         {
             ModelState.AddModelError("HoverImage", "Ancaq image tipinde data elave ede bilersiniz");
             return View(vm);
         }
-
-        if (vm.HoverImage?.CheckSize(2) ??  false)
+        if (vm.HoverImage.CheckSize(2))
         {
             ModelState.AddModelError("HoverImage", "Seklin maksimum uzunlugu 2mb-dan cox olmamalidir");
             return View(vm);
         }
-        
-        string folderPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images");
-        if (vm.MainImage is { })
-        {
-            string newMainImagePath = await vm.MainImage.SaveFileAsync(folderPath);
-            
-            string existMainImagePath = Path.Combine(folderPath, existedProduct.MainImagePath);
-            ExtensionMethods.DeleteFile(existMainImagePath);
-            existedProduct.MainImagePath = newMainImagePath;
-        }
-        
-        if (vm.HoverImage is { })
-        {
-            string newHoverImagePath = await vm.HoverImage.SaveFileAsync(folderPath);
-            
-            string existHoverImagePath = Path.Combine(folderPath, existedProduct.HoverImagePath);
-            ExtensionMethods.DeleteFile(existHoverImagePath);
-            existedProduct.HoverImagePath = newHoverImagePath;
-        }
-        
-        existedProduct.CategoryId = vm.CategoryId;
-        existedProduct.Name = vm.Name;
-        existedProduct.Description = vm.Description;
-        existedProduct.Price = vm.Price;
-        existedProduct.ProductTags = [];
-        //existedProduct.ImagePath = product.ImagePath;
+    }
 
-        foreach (var tagId in vm.TagIds)
+    foreach (var img in vm.Images ?? new List<IFormFile>())
+    {
+        if (!img.CheckType())
         {
-            ProductTag productTag = new()
-            {
-                TagId =  tagId,
-                ProductId = existedProduct.Id
-            };
-            existedProduct.ProductTags.Add(productTag);
+            ModelState.AddModelError("Images", "Ancaq image tipinde data elave ede bilersiniz");
+            return View(vm);
         }
-        context.Update(existedProduct);
-        await context.SaveChangesAsync();
-        return RedirectToAction("Index");
+        if (img.CheckSize(2))
+        {
+            ModelState.AddModelError("Images", "Seklin maksimum uzunlugu 2mb-dan cox olmamalidir");
+            return View(vm);
+        }
+    }
+
+    string folderPath = Path.Combine(_environment.WebRootPath, "assets", "images", "website-images");
+
+    if (vm.MainImage != null)
+    {
+        string newMainImagePath = await vm.MainImage.SaveFileAsync(folderPath);
+        ExtensionMethods.DeleteFile(Path.Combine(folderPath, existedProduct.MainImagePath));
+        existedProduct.MainImagePath = newMainImagePath;
+    }
+
+    if (vm.HoverImage != null)
+    {
+        string newHoverImagePath = await vm.HoverImage.SaveFileAsync(folderPath);
+        ExtensionMethods.DeleteFile(Path.Combine(folderPath, existedProduct.HoverImagePath));
+        existedProduct.HoverImagePath = newHoverImagePath;
+    }
+
+    existedProduct.CategoryId = vm.CategoryId;
+    existedProduct.Name = vm.Name;
+    existedProduct.Description = vm.Description;
+    existedProduct.Price = vm.Price;
+
+    existedProduct.ProductTags.Clear();
+    foreach (var tagId in vm.TagIds ?? new List<int>())
+    {
+        existedProduct.ProductTags.Add(new ProductTag
+        {
+            TagId = tagId,
+            ProductId = existedProduct.Id
+        });
+    }
+
+    var existImages = existedProduct.ProductImages.ToList();
+    foreach (var image in existImages)
+    {
+        bool keep = vm.AdditionalImagesIds?.Contains(image.Id) ?? false;
+        if (!keep)
+        {
+            ExtensionMethods.DeleteFile(Path.Combine(folderPath, image.ImagePath));
+            existedProduct.ProductImages.Remove(image);
+        }
+    }
+
+    foreach (var image in vm.Images ?? new List<IFormFile>())
+    {
+        string uniqueFilePath = await image.SaveFileAsync(folderPath);
+        existedProduct.ProductImages.Add(new ProductImage
+        {
+            ImagePath = uniqueFilePath,
+            ProductId = existedProduct.Id
+        });
+    }
+
+    await _context.SaveChangesAsync();
+    return RedirectToAction("Index");
     }
     
     public async Task<IActionResult> Delete(int id)
     {
-        var product = await context.Products.FindAsync(id);
+        var product = await _context.Products.Include(x=>x.ProductImages).FirstOrDefaultAsync(x=>x.Id == id);
         if (product is null)
             return NotFound();
 
         
-        context.Products.Remove(product);
-        await context.SaveChangesAsync();
+        _context.Products.Remove(product);
+        await _context.SaveChangesAsync();
         
         string folderPath = Path.Combine(_environment.WebRootPath,"assets","images","website-images");  
         string mainImagePath = Path.Combine(folderPath, product.MainImagePath);
         string hoverImagePath = Path.Combine(folderPath, product.HoverImagePath);
-        if(System.IO.File.Exists(mainImagePath))
-        System.IO.File.Delete(mainImagePath);
-        if(System.IO.File.Exists(hoverImagePath))
-        System.IO.File.Delete(hoverImagePath);
+        
+        ExtensionMethods.DeleteFile(mainImagePath);
+        ExtensionMethods.DeleteFile(hoverImagePath);
+
+        foreach (var productImage in product.ProductImages)
+        {
+            string imagePath =  Path.Combine(folderPath, productImage.ImagePath);
+            ExtensionMethods.DeleteFile(imagePath);
+        }
         
         return RedirectToAction(nameof(Index));
     }
 
     public async Task<IActionResult> Detail(int id)
     {
-        var product = await context.Products.Include(x=>x.Category)
+        var product = await _context.Products.Include(x=>x.Category)
             .Select(product=>new ProductGetViewModel()
             {
                 Id = product.Id,
@@ -273,7 +347,8 @@ public class ProductController : Controller
                 HoverImagePath =  product.HoverImagePath,
                 MainImagePath =  product.MainImagePath, 
                 CategoryName =  product.Category.Name,
-                TagNames = product.ProductTags.Select(x=>x.Tag.Name).ToList()
+                TagNames = product.ProductTags.Select(x=>x.Tag.Name).ToList(),
+                AdditionalImagePaths = product.ProductImages.Select(x=>x.ImagePath).ToList()
             }).FirstOrDefaultAsync(x => x.Id == id);
         
         if (product is null)
@@ -283,9 +358,9 @@ public class ProductController : Controller
 
     private async Task SendItemsWithViewBag<T>() where T : class
     {
-        var categories = await context.Set<T>().ToListAsync();
+        var categories = await _context.Set<T>().ToListAsync();
         ViewBag.Categories = categories;
-        var tags = await context.Tags.ToListAsync();
+        var tags = await _context.Tags.ToListAsync();
         ViewBag.Tags = tags;
     }
 }

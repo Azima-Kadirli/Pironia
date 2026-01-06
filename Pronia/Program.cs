@@ -37,7 +37,9 @@ namespace Pronia
               pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
             );
 
-
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.MapDefaultControllerRoute();
             app.Run();
         }

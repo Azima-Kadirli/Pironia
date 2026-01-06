@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DiaSymReader;
 using Pronia.ViewModels.UserViewModels;
 
 namespace Pronia.Controllers;
 
-public class AccountController(UserManager<AppUser>_userManager,SignInManager<AppUser>_signInManager) : Controller
+public class AccountController(UserManager<AppUser>_userManager,SignInManager<AppUser>_signInManager,RoleManager<IdentityRole>_roleManager) : Controller
 {
     public IActionResult Register()
     {
@@ -47,7 +48,8 @@ public class AccountController(UserManager<AppUser>_userManager,SignInManager<Ap
             }
             return View(vm);
         }
-        return Ok("Ok");
+        await _signInManager.SignInAsync(user, false);
+        return RedirectToAction("Index", "Home");
     }
 
     public async Task<IActionResult> Login(LoginViewModel vm)
@@ -67,13 +69,30 @@ public class AccountController(UserManager<AppUser>_userManager,SignInManager<Ap
             ModelState.AddModelError("","Email or password is incorrect.");
             return View(vm);
         }
-        await  _signInManager.SignInAsync(user, false);
-        return Ok($"{user.FullName} Welcome.");
+        await  _signInManager.SignInAsync(user,vm.IsRemember);
+        return RedirectToAction("Index", "Home");
     }
     
-    public async Task<IActionResult> LogOut()
+    public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction("Login", "Account");
     }
+
+    // public async Task<IActionResult> CreateRoles()
+    // {
+    //    await _roleManager.CreateAsync(new IdentityRole()
+    //     {
+    //         Name = "User"
+    //     });
+    //     await _roleManager.CreateAsync(new IdentityRole()
+    //     {
+    //         Name = "Admin"
+    //     });
+    //     await _roleManager.CreateAsync(new IdentityRole()
+    //     {
+    //         Name = "Moderator"
+    //     });
+    //     return Ok("Roles created");
+    // }
 }

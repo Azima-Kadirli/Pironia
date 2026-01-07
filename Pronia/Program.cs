@@ -1,8 +1,10 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
-using Pronia.Context;
+    using Pronia.Abstraction;
+    using Pronia.Context;
+    using Pronia.Services;
 
-namespace Pronia
+    namespace Pronia
 {
     public class Program
     {
@@ -28,6 +30,8 @@ namespace Pronia
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromHours(3);
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
+            builder.Services.AddScoped<IEmailService, EmailService>();
+            
             var app = builder.Build();
 
             app.UseStaticFiles();

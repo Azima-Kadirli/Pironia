@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Pronia.Abstraction;
 using Pronia.Context;
 using Pronia.ViewModels.ProductViewModels;
 
 namespace Pronia.Controllers;
 
-public class ShopController(AppDbContext context) : Controller
+public class ShopController(AppDbContext context,IEmailService _service) : Controller
 {
     public async Task<IActionResult> Index()
     {
@@ -31,5 +32,11 @@ public class ShopController(AppDbContext context) : Controller
         if(product is null)
             return NotFound();
         return View(product);
+    }
+
+    public async Task<IActionResult> Test()
+    {
+        await _service.SendEmailAsync("azimaqadirli@gmail.com", "MPA101", "Email service is created");
+        return Ok("Ok");
     }
 }

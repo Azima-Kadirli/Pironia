@@ -90,6 +90,9 @@ public class AccountController(UserManager<AppUser>_userManager,SignInManager<Ap
         }
         
         await  _signInManager.SignInAsync(user,vm.IsRemember);
+        if(!string.IsNullOrEmpty(vm.ReturnUrl))
+          return Redirect(vm.ReturnUrl);
+        
         return RedirectToAction("Index", "Home");
     }
     

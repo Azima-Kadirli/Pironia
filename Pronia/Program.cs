@@ -31,6 +31,7 @@
             }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
             builder.Services.AddScoped<IEmailService, EmailService>();
+            builder.Services.AddScoped<IBasketService, BasketService>();
             
             var app = builder.Build();
 

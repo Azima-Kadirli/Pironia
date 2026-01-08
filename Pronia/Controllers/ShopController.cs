@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pronia.Abstraction;
 using Pronia.Context;
@@ -38,5 +40,41 @@ public class ShopController(AppDbContext context,IEmailService _service) : Contr
     {
         await _service.SendEmailAsync("azimaqadirli@gmail.com", "MPA101", "Email service is created");
         return Ok("Ok");
+    }
+
+
+    public async Task<IActionResult> AddToBasket(int productId)
+    {
+        var isExistProduct = await context.Products.AnyAsync(x=>x.Id==productId);
+        if(isExistProduct == false)
+            return NotFound();
+        
+        string userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+        var isExistUser = await context.Users.AnyAsync(x=>x.Id==userId);
+
+        if(isExistUser == false)
+            return BadRequest();
+        
+        
+        var isExistBasketItem = await context.BasketItems.FirstOrDefaultAsync(x=>x.ProductId==productId && x.AppUserId == userId);
+        if (isExistBasketItem is  { })
+        {
+            isExistBasketItem.Count++;
+            context.BasketItems.Update(isExistBasketItem);
+          
+        }
+        else
+        {
+        BasketItem basketItem = new()
+        {
+            ProductId =  productId,
+            AppUserId = userId,
+            Count = 1
+        };
+        await context.BasketItems.AddAsync(basketItem);
+            
+        }
+            await context.SaveChangesAsync();
+        return RedirectToAction("Index","Shop");
     }
 }

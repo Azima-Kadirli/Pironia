@@ -10,4 +10,5 @@ public class LoginViewModel
     public string Password { get; set; } = string.Empty;
     
     public bool IsRemember { get; set; }
+    public string? ReturnUrl { get; set; }
 }

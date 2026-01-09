@@ -42,7 +42,7 @@ public class ShopController(AppDbContext context,IEmailService _service) : Contr
         return Ok("Ok");
     }
 
-
+    [Authorize]
     public async Task<IActionResult> AddToBasket(int productId)
     {
         var isExistProduct = await context.Products.AnyAsync(x=>x.Id==productId);
@@ -76,5 +76,32 @@ public class ShopController(AppDbContext context,IEmailService _service) : Contr
         }
             await context.SaveChangesAsync();
         return RedirectToAction("Index","Shop");
+    }
+
+    public async  Task<IActionResult> RemoveFromBasket(int productId)
+    {
+        var isExistProduct = await context.Products.AnyAsync(x=>x.Id==productId);
+        if(isExistProduct == false)
+            return NotFound();
+        
+        string userId = User.FindFirstValue(ClaimTypes.NameIdentifier) ?? "";
+        var isExistUser = await context.Users.AnyAsync(x=>x.Id==userId);
+
+        if(isExistUser == false)
+            return BadRequest();
+
+        var basketItem =
+            await context.BasketItems.FirstOrDefaultAsync(x => x.AppUserId == userId && x.ProductId == productId);
+        if (basketItem is null)
+            return NotFound();
+
+        context.BasketItems.Remove(basketItem);
+        await context.SaveChangesAsync();
+        
+        string? returnUrl = Request.Headers["Referer"];
+        if(string.IsNullOrWhiteSpace(returnUrl))
+            return Redirect(returnUrl);
+        
+        return RedirectToAction("Index");
     }
 }

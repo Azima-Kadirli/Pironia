@@ -8,7 +8,7 @@ using Pronia.ViewModels.ProductViewModels;
 
 namespace Pronia.Controllers;
 
-public class ShopController(AppDbContext context,IEmailService _service) : Controller
+public class ShopController(AppDbContext context,IEmailService _service,IBasketService _basketService) : Controller
 {
     public async Task<IActionResult> Index()
     {
@@ -65,17 +65,18 @@ public class ShopController(AppDbContext context,IEmailService _service) : Contr
         }
         else
         {
-        BasketItem basketItem = new()
-        {
-            ProductId =  productId,
-            AppUserId = userId,
-            Count = 1
-        };
-        await context.BasketItems.AddAsync(basketItem);
+            BasketItem basketItem = new()
+            {
+                ProductId =  productId,
+                AppUserId = userId,
+                Count = 1
+            };
+            await context.BasketItems.AddAsync(basketItem);
             
         }
-            await context.SaveChangesAsync();
-        return RedirectToAction("Index","Shop");
+        await context.SaveChangesAsync();
+        var basketItems = await _basketService.GetBasketItemsAsync();
+        return PartialView("_BasketPartial",basketItems);
     }
 
     public async  Task<IActionResult> RemoveFromBasket(int productId)

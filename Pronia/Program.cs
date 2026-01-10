@@ -32,6 +32,7 @@
 
             builder.Services.AddScoped<IEmailService, EmailService>();
             builder.Services.AddScoped<IBasketService, BasketService>();
+            builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
             
             var app = builder.Build();
 

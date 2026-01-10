@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Pronia.Abstraction;
@@ -45,6 +46,9 @@ public class BasketController : Controller
         _context.BasketItems.Update(basketItem);
         await _context.SaveChangesAsync();
 
-        return RedirectToAction("Index");
+        var basketItems = await _service.GetBasketItemsAsync();
+        return PartialView("_BasketPartial",basketItems);
     }
+    
+  
 }
